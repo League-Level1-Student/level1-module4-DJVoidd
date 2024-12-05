@@ -1,19 +1,40 @@
 package _07_tv_show_episode_info;
 
 
+import java.awt.Color;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.util.ArrayList;
 
+import javax.swing.JButton;
+import javax.swing.JColorChooser;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
 
-public class TVShowEpisodeInfoDisplayer {
-	
+public class TVShowEpisodeInfoDisplayer implements ActionListener{
+	JFrame frame =new JFrame();
+	JPanel panel = new JPanel();
+	JButton button = new JButton();
+	JTextField textField = new JTextField(15);
+	JColorChooser s = new JColorChooser();
+	String sigma;
 	public TVShowEpisodeInfoDisplayer() {
-		
+		frame.add(panel);
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		panel.add(s);
+		panel.add(textField);
+		panel.add(button);
+		frame.setVisible(true);
+		frame.pack();
+		Color c = s.getColor();
+		textField.setForeground(c);
+		button.addActionListener(this);
 	}
 
 	
@@ -74,4 +95,18 @@ public class TVShowEpisodeInfoDisplayer {
 		
 		return res;
 	}
+
+
+
+
+
+@Override
+public void actionPerformed(ActionEvent e) {
+	// TODO Auto-generated method stub
+	if ((JButton) e.getSource() ==  button) {
+		textField.setForeground(s.getColor());
+		sigma = textField.getText();
+		JOptionPane.showMessageDialog(null, getShowEpisodeData(sigma));
+	}
+}
 }

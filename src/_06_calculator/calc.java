@@ -19,10 +19,9 @@ JButton div =  new JButton();
 JTextField num1Field = new JTextField(10);
 JTextField num2Field = new JTextField(10);
 JTextField resultField = new JTextField(10);
+double num1;
+double num2;
 
-double num1 = Double.parseDouble(num1Field.getText());
-double num2 = Double.parseDouble(num2Field.getText());
-double result = 0;
 public void run() {
 frame.setVisible(true);
 frame.add(panel);
@@ -58,6 +57,8 @@ public void divide() {
 	
 }
 public void actionPerformed(ActionEvent e) {
+	num1 = Double.parseDouble(num1Field.getText());
+	num2 = Double.parseDouble(num2Field.getText());
 	if ((JButton) e.getSource() == (add)) {
 		add();
 	}
